@@ -1,0 +1,14 @@
+name: "Dating & Porn spam emails"
+description: |
+    Detects emails that spam inboxes with dating & porn spam
+type: "rule"
+severity: "low"
+source: |
+    type.inbound 
+    and any(body.links, .href_url.domain.domain == 'storage.googleapis.com')
+    and sender.email.domain.domain == 'yahoo.com'
+    and any(recipients.to, .display_name == 'gnzjoe9@gmail.com')
+    and regex_match(headers.mailer, 'WebService/\d{1}.\d{1}.\d{5} YMailNorrin')
+tags:
+    - "Dating"
+    - "Porn"
