@@ -1,0 +1,14 @@
+name: "Fake survey spam using Google API"
+description: |
+    Detects emails that spam random offers and fake rewards
+    leading to fake surveys.
+type: "rule"
+severity: "low"
+source: |
+    type.inbound 
+    and any(body.links, .href_url.domain.domain == 'storage.googleapis.com' and .href_url.path == '/01439e9df401e2e/alinkasa.html')
+    and regex_match(headers.message_id, '<[a-zA-Z0-9.]+@affpartners.com>')
+    and any(headers.domains, .sld == 'mediapub')
+    and sender.email.domain.tld == 'br.com'
+tags:
+    - "Spam"
