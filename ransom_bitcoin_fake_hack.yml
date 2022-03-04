@@ -1,4 +1,4 @@
-name: "Bitcoin hacked email with a bitcoin address in body"
+name: "Bitcoin ransom email with a bitcoin address in body"
 description: |
     Detects emails that tell you 'You got hacked' by some fake software
     and you are required to pay a ransom via Bitcoin or they will spread
