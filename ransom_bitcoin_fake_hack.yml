@@ -1,0 +1,14 @@
+name: "Bitcoin hacked email with a bitcoin address in body"
+description: |
+    Detects emails that tell you 'You got hacked' by some fake software
+    and you are required to pay a ransom via Bitcoin or they will spread
+    nude pictures of you to your contacts.
+type: "rule"
+severity: "medium"
+source: |
+    type.inbound 
+    and regex_search(body.html.raw, '\b(([1][a-km-zA-HJ-NP-Z1-9]{25,35})|([3][a-km-zA-HJ-NP-Z1-9]{33})|(bc|tb)1(^.*[1bio])[a-z0-9]{39,59})\b')
+    and any([body.html.raw], ilike(., '*hacker*', '*virus*', '*malware*', '*adult*', '*bitcoin*'))
+tags:
+    - "Bitcoin Hack"
+    - "Ransom"
