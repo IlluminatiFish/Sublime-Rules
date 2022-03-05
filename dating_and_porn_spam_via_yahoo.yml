@@ -1,6 +1,7 @@
-name: "Dating & Porn spam emails"
+name: "Explicit dating spam emails"
 description: |
-    Detects emails that spam inboxes with dating & porn spam
+    Detects emails that spam inboxes with very explicit messages 
+    using keywords and emojis all over
 type: "rule"
 severity: "low"
 source: |
@@ -11,4 +12,4 @@ source: |
     and regex_match(headers.mailer, 'WebService/\d{1}.\d{1}.\d{5} YMailNorrin')
 tags:
     - "Dating"
-    - "Porn"
+    - "Spam"
