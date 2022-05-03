@@ -1,0 +1,14 @@
+name: "Explicit dating spam emails using Freenom"
+description: |
+    Detects emails that spam inboxes with very explicit messages 
+    using Freenom domains in the URLs
+type: "rule"
+severity: "low"
+source: |
+    type.inbound 
+    and sender.email.local_part == 'from'
+    and any(body.links, regex_match(.href_url.url, 'http:\/\/[a-z]+\.(?:tk|ml|ga|gq|com|cf)(\/[a-z]+(?:/2235736043|/[a-z]+)\/(?:2235736043|[a-z]+)(?:\/[0-9]+|\/[a-z]+)*)'))
+tags:
+    - "Dating"
+    - "Spam"
+
